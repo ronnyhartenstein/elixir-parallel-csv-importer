@@ -7,7 +7,7 @@ Ziel der Übung ist zu prüfen, wie in Elixir massiv große CSV Datenbestände p
 
 Mix Task `generate` mit 2 Parametern:
 
-    mix generate test.csv 1000
+    mix generate test.csv 10000
 
 Lesestoff:
   * [Faker Framework](https://github.com/igas/faker/)
@@ -16,12 +16,16 @@ Lesestoff:
 
 ## CSV einlesen
 
+Mix Task `import` mit 1 Parameter:
+
+    mix import test.csv
+
 Nutzt Paket `csv`:
   * Github: https://github.com/beatrichartz/csv
   * Hex Doc: http://hexdocs.pm/csv/
   * `CSV.decode` nutzt standardmäßig 8 Prozess-Pipes bei File-Stream-Verarbeitung
 
-
+  
 ## Lesestoff
 
   * bessere Testdaten mit Blacksmith http://icanmakeitbetter.com/elixir-testing-blacksmith/
