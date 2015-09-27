@@ -16,7 +16,10 @@ Lesestoff:
 
 ## CSV einlesen
 
-https://github.com/beatrichartz/csv
+Nutzt Paket `csv`:
+  * Github: https://github.com/beatrichartz/csv
+  * Hex Doc: http://hexdocs.pm/csv/
+  * `CSV.decode` nutzt standardmäßig 8 Prozess-Pipes bei File-Stream-Verarbeitung
 
 
 ## Lesestoff

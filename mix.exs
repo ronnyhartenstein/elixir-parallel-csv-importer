@@ -7,6 +7,8 @@ defmodule CsvImporter.Mixfile do
      elixir: "~> 1.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     escript: escript_config,
+     default_task: "import",
      deps: deps]
   end
 
@@ -31,5 +33,10 @@ defmodule CsvImporter.Mixfile do
       {:csv, "~> 1.1.0"},
       {:faker, "~> 0.5"}
     ]
+  end
+
+
+  defp escript_config do
+    [ main_module: CsvImporter ]
   end
 end

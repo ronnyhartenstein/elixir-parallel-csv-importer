@@ -20,6 +20,11 @@ defmodule Mix.Tasks.Generate do
     Mix.shell.info "Zeit: #{time/1_000_000}s"
   end
 
+  def run(args) do
+    IO.inspect(args)
+    Mix.shell.error "Aufruf: mix generate <datei> <num_rows>"
+  end
+
   def generate_csv(file, num_rows) do
     Faker.start
 
@@ -27,11 +32,6 @@ defmodule Mix.Tasks.Generate do
     |> File.open([:write])
     |> write_csv_rows(num_rows)
     |> File.close
-  end
-
-  def run(args) do
-    IO.inspect(args)
-    Mix.shell.error "Aufruf: mix generate datei.csv 100"
   end
 
   defp write_csv_rows({:ok, file}, num_rows) do
