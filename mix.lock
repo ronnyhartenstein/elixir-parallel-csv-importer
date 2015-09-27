@@ -1,0 +1,3 @@
+%{"csv": {:hex, :csv, "1.1.4"},
+  "faker": {:hex, :faker, "0.5.1"},
+  "poison": {:hex, :poison, "1.5.0"}}

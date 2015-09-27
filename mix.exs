@@ -27,6 +27,9 @@ defmodule CsvImporter.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [
+      {:csv, "~> 1.1.0"},
+      {:faker, "~> 0.5"}
+    ]
   end
 end
