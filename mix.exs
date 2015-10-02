@@ -16,7 +16,10 @@ defmodule CsvImporter.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [
+      mod: {CsvImporterPool, []},
+      applications: [:logger]
+    ]
   end
 
   # Dependencies can be Hex packages:
@@ -30,7 +33,7 @@ defmodule CsvImporter.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      {:csv, "~> 1.1.0"},
+      #{:csv, "~> 1.1.0"},
       {:faker, "~> 0.5"},
       {:poolboy, "~> 1.5"}
     ]

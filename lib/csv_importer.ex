@@ -26,17 +26,12 @@ defmodule CsvImporter do
 
   def process({file}) do
     Logger.info "verarbeite #{file} .."
-    queue = File.stream!(file)
-    # das Modul ist scheiße langsam mit 100k Input-Daten
-    #|> CSV.decode([separator: ?;]) # Std: :num_pipes 8
+    File.stream!(file)
+    #|> CSV.decode([separator: ?;]) # Std: :num_pipes 8   # das Modul ist scheiße langsam mit 100k Input-Daten
     |> Stream.map(&split_row/1)
     |> Enum.map(&store_row/1)
-    #|> Stream.map(&store_row/1)
-    #|> Enum.take(1000)
-    IO.puts "done queueing"
-    #IO.inspect queue
-    queue |> Enum.map(&await_ok/1)
-    IO.puts "done awaiting"
+
+    :timer.sleep(10_000)
   end
 
   def await_ok(task) do
@@ -58,22 +53,16 @@ defmodule CsvImporter do
     # TODO aus erste-Zeile holen
     headers = [:id, :first, :last, :company]
     row = Enum.zip(headers, data)
-    Logger.debug "data #{data} -> #{row}"
-
-    # syncrone Verarbeitung
-    #sql_insert(row)
-
-    # parallele Verarbeitung
-    #IO.write "+"
-    Task.async(fn -> sql_insert(row) end)
+    #Logger.debug "data #{data} -> #{row}"
+    CsvImporterPool.add_row(row)
   end
 
-  def sql_insert(set) do
-    "INSERT INTO table SET "
-      <> Enum.map_join(set, ", ", fn({col, val}) -> "#{col}='#{val}'" end)
-      <> ";"
-    :timer.sleep(Enum.random(50..100))
-    #IO.inspect sql
-    #IO.write "."
-  end
+  # def sql_insert(set) do
+  #   "INSERT INTO table SET "
+  #     <> Enum.map_join(set, ", ", fn({col, val}) -> "#{col}='#{val}'" end)
+  #     <> ";"
+  #   :timer.sleep(Enum.random(50..100))
+  #   #IO.inspect sql
+  #   #IO.write "."
+  # end
 end
