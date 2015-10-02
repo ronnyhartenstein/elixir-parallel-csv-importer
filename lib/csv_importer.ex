@@ -35,8 +35,8 @@ defmodule CsvImporter do
     #|> Enum.take(1000)
     IO.puts "done queueing"
     #IO.inspect queue
-    #queue |> Enum.map(&await_ok/1)
-    #IO.puts "done awaiting"
+    queue |> Enum.map(&await_ok/1)
+    IO.puts "done awaiting"
   end
 
   def await_ok(task) do
@@ -61,10 +61,11 @@ defmodule CsvImporter do
     Logger.debug "data #{data} -> #{row}"
 
     # syncrone Verarbeitung
-    sql_insert(row)
+    #sql_insert(row)
+
     # parallele Verarbeitung
     #IO.write "+"
-    #Task.async(fn -> sql_insert(row) end)
+    Task.async(fn -> sql_insert(row) end)
   end
 
   def sql_insert(set) do
