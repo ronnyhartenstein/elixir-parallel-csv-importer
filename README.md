@@ -25,7 +25,10 @@ Nutzt Paket `csv`:
   * Hex Doc: http://hexdocs.pm/csv/
   * `CSV.decode` nutzt standardmäßig 8 Prozess-Pipes bei File-Stream-Verarbeitung
 
-  
+## Parallelität mit Poolboy
+
+https://github.com/thestonefox/elixir_poolboy_example
+
 ## Lesestoff
 
   * bessere Testdaten mit Blacksmith http://icanmakeitbetter.com/elixir-testing-blacksmith/
