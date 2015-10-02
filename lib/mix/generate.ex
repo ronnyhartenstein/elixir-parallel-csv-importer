@@ -14,7 +14,7 @@ defmodule Mix.Tasks.Generate do
     # Zeitmessung ist fummelig
     # https://groups.google.com/forum/#!topic/elixir-lang-core/lhxQyTLzN0Y
     # http://www.erlang.org/doc/man/timer.html#now_diff-2
-    ts = :erlang.timestamp
+    ts = :erlang.timestampx
     generate_csv(file, num_rows)
     time = :timer.now_diff(:erlang.timestamp, ts)
     Mix.shell.info "Zeit: #{time/1_000_000}s"

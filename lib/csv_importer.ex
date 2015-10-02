@@ -26,8 +26,18 @@ defmodule CsvImporter do
   def process({file}) do
     Logger.info "verarbeite #{file} .."
     File.stream!(file)
-    |> CSV.decode([separator: ?;]) # Std: :num_pipes 8
-    |> Enum.map(&store_row(&1))
+    # das Modul ist scheiße langsam mit 100k Input-Daten
+    #|> CSV.decode([separator: ?;]) # Std: :num_pipes 8
+    |> Stream.map(&split_row/1)
+    # TODO auf 1-8 Prozesse verteilen
+    # TODO je Prozess validierung ca. 50ms
+    |> Enum.map(&store_row/1)
+    #|> Stream.map(&store_row/1)
+    #|> Enum.take(1000)
+  end
+
+  def split_row(row) do
+    String.split(row,";")
   end
 
   def store_row([id | _]) when id == "id" do
@@ -46,6 +56,6 @@ defmodule CsvImporter do
       <> Enum.map_join(set, ", ", fn({col, val}) -> "#{col}='#{val}'" end)
       <> ";"
     #IO.inspect sql
-    IO.write "."
+    #IO.write "."
   end
 end
