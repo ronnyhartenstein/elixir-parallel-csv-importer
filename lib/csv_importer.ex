@@ -31,7 +31,7 @@ defmodule CsvImporter do
     |> Stream.map(&split_row/1)
     |> Enum.map(&store_row/1)
 
-    :timer.sleep(10_000)
+    # :timer.sleep(10_000)
   end
 
   def await_ok(task) do

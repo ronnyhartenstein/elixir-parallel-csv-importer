@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Generate do
+defmodule Mix.Tasks.Csv.Generate do
   use Mix.Task
   require Logger
   require Faker.Name

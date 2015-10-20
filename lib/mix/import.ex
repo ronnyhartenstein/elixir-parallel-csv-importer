@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Import do
+defmodule Mix.Tasks.Csv.Import do
   use Mix.Task
 
   @shortdoc "Importiert CSV Daten (erzeugt SQLs)"
