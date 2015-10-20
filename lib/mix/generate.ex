@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Generate do
+defmodule Mix.Tasks.Csv.Generate do
   use Mix.Task
   require Logger
   require Faker.Name
@@ -43,7 +43,7 @@ defmodule Mix.Tasks.Generate do
     #Logger.debug "##{num}"
     if num == 1, do: write_header(file)
     row = get_faker_data_row(num) |> generate_row
-    Logger.debug "row: #{row}"
+    #Logger.debug "row: #{row}"
     IO.puts file, row
   end
 
