@@ -22,7 +22,6 @@ defmodule CsvImporter.Mixfile do
     [
       #{:csv, "~> 1.1.0"},
       {:faker, "~> 0.5"},
-      #{:poolboy, "~> 1.5"}
       {:parallel_stream, "~> 0.1.0"}
     ]
   end
