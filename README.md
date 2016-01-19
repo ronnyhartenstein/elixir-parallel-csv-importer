@@ -1,6 +1,8 @@
 CsvImporter
 ===========
 
+See blog post ["Parallel processing of CSV in Elixir and Golang"](http://blog.rh-flow.de/2016/01/19/parallel-processing-of-csv-in-elixir-and-golang/)
+
 Ziel der Übung ist zu prüfen, wie in Elixir massiv große CSV Datenbestände parallel und zügig importiert werden können.
 
 ## Testdaten generieren
